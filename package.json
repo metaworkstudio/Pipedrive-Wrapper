@@ -1,0 +1,26 @@
+{
+  "name": "pipedrive-wrapper",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test/main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/metaworkstudio/Pipedrive-Wrapper.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/metaworkstudio/Pipedrive-Wrapper/issues"
+  },
+  "homepage": "https://github.com/metaworkstudio/Pipedrive-Wrapper#readme",
+  "dependencies": {
+    "pipedrive": "^11.0.0"
+  },
+  "devDependencies": {
+    "mocha": "^9.0.3",
+    "dotenv": "^10.0.0"
+  }
+}
