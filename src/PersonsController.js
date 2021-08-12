@@ -1,10 +1,10 @@
 const pipedrive = require('pipedrive');
-const OrganizationsController = require('pipedrive/lib/Controllers/OrganizationsController');
+const PersonsController = require('pipedrive/lib/Controllers/PersonsController');
 
-class OrganizationsControllerWrapper extends OrganizationsController {
+class PersonsControllerWrapper extends PersonsController {
 
   /**
-   * Find or create an organization
+   * Find or create a person
    *
    * @param {object} input
    * @param {object} input.body
@@ -12,20 +12,20 @@ class OrganizationsControllerWrapper extends OrganizationsController {
    * @param {function} [callback]
    * @returns {Promise<unknown>}
    */
-  static findOrCreateOrganization(input, callback) {
+  static findOrCreatePerson(input, callback) {
     const _callback = typeof callback === 'function' ? callback : () => undefined;
 
     return new Promise((resolve, reject) => {
-      // Find an organization
+      // Find a person
       pipedrive.ItemsController.
           searchItemByField({
             term: input.params.term,
-            fieldType: 'organizationField',
+            fieldType: 'personField',
             fieldKey: input.params.fieldKey,
             returnItemIds: input.params.returnItemIds,
             exactMatch: input.params.exactMatch,
           }, callback).
-          // Return founded organization
+          // Return founded person
           then(response => {
             if (Array.isArray(response.data) && response.data.length > 0) {
               _callback(null, response, null);
@@ -33,11 +33,11 @@ class OrganizationsControllerWrapper extends OrganizationsController {
               return resolve(response);
             }
 
-            return pipedrive.OrganizationsController.addAnOrganization({
+            return pipedrive.PersonsController.addAPerson({
               body: input.body,
             });
           }).
-          // Create founded organization
+          // Create founded person
           then(response => {
             _callback(null, response, null);
 
@@ -52,7 +52,7 @@ class OrganizationsControllerWrapper extends OrganizationsController {
   };
 
   /**
-   * Find and save or create an organization
+   * Find and save or create a person
    *
    * @param {object} input
    * @param {object} input.body
@@ -60,31 +60,31 @@ class OrganizationsControllerWrapper extends OrganizationsController {
    * @param {function} [callback]
    * @returns {Promise<unknown>}
    */
-  static findAndSaveOrganization(input, callback) {
+  static findAndSavePerson(input, callback) {
     const _callback = typeof callback === 'function' ? callback : () => undefined;
 
     return new Promise((resolve, reject) => {
-      // Find an organization
+      // Find a person
       pipedrive.ItemsController.
           searchItemByField({
             term: input.params.term,
-            fieldType: 'organizationField',
+            fieldType: 'personField',
             fieldKey: input.params.fieldKey,
             returnItemIds: input.params.returnItemIds,
             exactMatch: input.params.exactMatch,
           }, callback).
           then(response => {
-            // Create an organization
+            // Create a person
             if (Array.isArray(response.data) && response.data.length === 0) {
-              return pipedrive.OrganizationsController.addAnOrganization({
+              return pipedrive.PersonsController.addAPerson({
                 body: input.body,
               });
             }
-            // Save founded organization
+            // Save founded person
             else {
               input.body.id = response.data[0].id;
 
-              return pipedrive.OrganizationsController.updateAnOrganization(input.body);
+              return pipedrive.PersonsController.updateAPerson(input.body);
             }
           }).
           then(response => {
@@ -100,6 +100,6 @@ class OrganizationsControllerWrapper extends OrganizationsController {
     });
   };
 
-}
+ }
 
-module.exports = OrganizationsControllerWrapper;
+ module.exports = PersonsControllerWrapper;

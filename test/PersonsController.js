@@ -1,18 +1,19 @@
+require('dotenv').config();
 const assert = require('assert');
 const pipedrive = require('../src');
 pipedrive.Configuration.apiToken = process.env.API_TOKEN;
 
 const data = {
-  organization: {
-    name: '[TEST] test organization for testing',
+  person: {
+    name: '[TEST] test person for testing',
   },
 };
 
-describe('OrganizationsController', function() {
+describe('PersonsController', function() {
   function beforeAndAfterSuit(done) {
     pipedrive.ItemsController.searchItemByField({
-      term: data.organization.name,
-      fieldType: 'organizationField',
+      term: data.person.name,
+      fieldType: 'personField',
       exactMatch: true,
       fieldKey: 'name',
       returnItemIds: true,
@@ -24,7 +25,7 @@ describe('OrganizationsController', function() {
               return done();
             }
 
-            pipedrive.OrganizationsController.deleteAnOrganization(response.data[0].id).
+            pipedrive.PersonsController.deleteAPerson(response.data[0].id).
                 then(() => done());
           } catch (ex) {
             return done(ex);
@@ -32,18 +33,18 @@ describe('OrganizationsController', function() {
         });
   }
 
-  describe('#findAndSaveOrganization()', function() {
-    before('Remove a test organization before the start', beforeAndAfterSuit);
-    after('Remove a test organization before the start', beforeAndAfterSuit);
+  describe('#findAndSavePerson()', function() {
+    before('Remove a test person before the start', beforeAndAfterSuit);
+    after('Remove a test person before the start', beforeAndAfterSuit);
 
-    it('Create an organization', function(done) {
-      pipedrive.OrganizationsController.
-          findAndSaveOrganization({
-                organization: {
-                  name: data.organization.name,
+    it('Create a person', function(done) {
+      pipedrive.PersonsController.
+          findAndSavePerson({
+                body: {
+                  name: data.person.name,
                 },
                 params: {
-                  term: data.organization.name,
+                  term: data.person.name,
                   fieldKey: 'name',
                   returnItemIds: true,
                   exactMatch: true,
@@ -63,14 +64,14 @@ describe('OrganizationsController', function() {
             return done(err);
           });
     });
-    it('Find an organization', function(done) {
-      pipedrive.OrganizationsController.
-          findAndSaveOrganization({
-                organization: {
-                  name: data.organization.name,
+    it('Find a person', function(done) {
+      pipedrive.PersonsController.
+          findAndSavePerson({
+                body: {
+                  name: data.person.name,
                 },
                 params: {
-                  term: data.organization.name,
+                  term: data.person.name,
                   fieldKey: 'name',
                   returnItemIds: true,
                   exactMatch: true,
@@ -92,18 +93,18 @@ describe('OrganizationsController', function() {
     });
   });
 
-  describe('#findAndSaveOrganization()', function() {
-    before('Remove a test organization before the start', beforeAndAfterSuit);
-    after('Remove a test organization before the start', beforeAndAfterSuit);
+  describe('#findAndSavePerson()', function() {
+    before('Remove a test person before the start', beforeAndAfterSuit);
+    after('Remove a test person before the start', beforeAndAfterSuit);
 
-    it('Create an organization', function(done) {
-      pipedrive.OrganizationsController.
-          findAndSaveOrganization({
-                organization: {
-                  name: data.organization.name,
+    it('Create a person', function(done) {
+      pipedrive.PersonsController.
+          findAndSavePerson({
+                body: {
+                  name: data.person.name,
                 },
                 params: {
-                  term: data.organization.name,
+                  term: data.person.name,
                   fieldKey: 'name',
                   returnItemIds: true,
                   exactMatch: true,
@@ -123,14 +124,14 @@ describe('OrganizationsController', function() {
             return done(err);
           });
     });
-    it('Update an organization', function(done) {
-      pipedrive.OrganizationsController.
-          findAndSaveOrganization({
-                organization: {
-                  name: data.organization.name,
+    it('Update a person', function(done) {
+      pipedrive.PersonsController.
+          findAndSavePerson({
+                body: {
+                  name: data.person.name,
                 },
                 params: {
-                  term: data.organization.name,
+                  term: data.person.name,
                   fieldKey: 'name',
                   returnItemIds: true,
                   exactMatch: true,
@@ -152,4 +153,3 @@ describe('OrganizationsController', function() {
     });
   });
 });
-
