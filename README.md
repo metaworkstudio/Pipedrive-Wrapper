@@ -116,7 +116,7 @@ Paginate and return all records.
 
 Return a promise with a single connected array.
 
-##Models
+## Models
 
 Some models were modified cause an original package returned a null mapped response.
 
