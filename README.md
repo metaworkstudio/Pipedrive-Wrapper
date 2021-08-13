@@ -102,7 +102,7 @@ Find or create and update a founded product.
 
 Return a promise with a not modified response.
 
-#### PaginationController
+### PaginationController
 
 > _all(fn, input, callback)_
 
@@ -120,7 +120,7 @@ Return a promise with a single connected array.
 
 Some models were modified cause an original package returned a null mapped response.
 
-#### Product
+### Product
 
 ```
 [
