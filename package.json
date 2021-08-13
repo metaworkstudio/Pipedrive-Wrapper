@@ -1,16 +1,23 @@
 {
   "name": "pipedrive-wrapper",
   "version": "1.0.0",
-  "description": "",
+  "description": "Pipedrive Wrapper is a sugar wrapper over official package Pipedrive",
+  "keywords": [
+    "pipedrive",
+    "crm",
+    "erp",
+    "wrapper",
+    "sugar"
+  ],
   "main": "index.js",
   "scripts": {
-    "test": "node test/OrganizationsControlle.js"
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/metaworkstudio/Pipedrive-Wrapper.git"
   },
-  "author": "",
+  "author": "Metawork.Studio <devops@metawork.studio> (https://metawork.studio)",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/metaworkstudio/Pipedrive-Wrapper/issues"
