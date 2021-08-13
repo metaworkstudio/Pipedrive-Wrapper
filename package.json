@@ -1,6 +1,6 @@
 {
   "name": "pipedrive-wrapper",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Pipedrive Wrapper is a sugar wrapper over official package Pipedrive",
   "keywords": [
     "pipedrive",
