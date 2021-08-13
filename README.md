@@ -4,7 +4,9 @@ Add new functionality to the official package. In the list you can find extensio
 
 ### OrganizationsController
 
-> _findOrCreateOrganization(input, callback)_
+```javascript
+findOrCreateOrganization(input, callback)
+```
 
 Find or create an organization.
 
@@ -16,7 +18,9 @@ Find or create an organization.
 Return a promise with a not modified response.
 
 
-> _findAndSaveOrganization(input, callback)_
+```javascript
+findAndSaveOrganization(input, callback)
+```
 
 Find or create and update a founded organization.
 
@@ -29,7 +33,9 @@ Return a promise with a not modified response.
 
 ### PersonsController
 
-> _findOrCreatePerson(input, callback)_
+```javascript
+findOrCreatePerson(input, callback)
+```
 
 Find or create a person.
 
@@ -41,7 +47,9 @@ Find or create a person.
 Return a promise with a not modified response.
 
 
-> _findAndSavePerson(input, callback)_
+```javascript
+findAndSavePerson(input, callback)
+```
 
 Find or create and update a founded person.
 
@@ -54,7 +62,9 @@ Return a promise with a not modified response.
 
 ### DealsController
 
-> _findOrCreateDeal(input, callback)_
+```javascript
+findOrCreateDeal(input, callback)
+```
 
 Find or create a deal.
 
@@ -66,7 +76,9 @@ Find or create a deal.
 Return a promise with a not modified response.
 
 
-> _findAndSaveDeal(input, callback)_
+```javascript
+findAndSaveDeal(input, callback)
+```
 
 Find or create and update a founded deal.
 
@@ -79,7 +91,9 @@ Return a promise with a not modified response.
 
 ### ProductsController
 
-> _findOrCreateProduct(input, callback)_
+```javascript
+findOrCreateProduct(input, callback)
+```
 
 Find or create a product.
 
@@ -91,7 +105,9 @@ Find or create a product.
 Return a promise with a not modified response.
 
 
-> _findAndSaveProduct(input, callback)_
+```javascript
+findAndSaveProduct(input, callback)
+```
 
 Find or create and update a founded product.
 
@@ -104,7 +120,9 @@ Return a promise with a not modified response.
 
 ### PaginationController
 
-> _all(fn, input, callback)_
+```javascript
+all(fn, input, callback)
+```
 
 Paginate and return all records.
 
