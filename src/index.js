@@ -1,12 +1,12 @@
 'use strict';
 
 const pipedrive = require('pipedrive');
-const Product = require('./models/Product')
-const PaginationController = require('./PaginationController');
-const OrganizationsController = require('./OrganizationsController');
-const PersonsController = require('./PersonsController');
-const DealsController = require('./DealsController');
-const ProductsController = require('./ProductsController');
+const Product = require('./Models/Product')
+const PaginationController = require('./Controllers/PaginationController');
+const OrganizationsController = require('./Controllers/OrganizationsController');
+const PersonsController = require('./Controllers/PersonsController');
+const DealsController = require('./Controllers/DealsController');
+const ProductsController = require('./Controllers/ProductsController');
 
 pipedrive.Product.mappingInfo = Product.mappingInfo;
 

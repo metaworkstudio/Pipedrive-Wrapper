@@ -28,7 +28,13 @@ class PaginationController {
 
         dataset = dataset.concat(response.data);
 
-        let dataAvailable = response['additional_data']['pagination']['more_items_in_collection'];
+        let dataAvailable = false;
+
+        if (response['additional_data']
+            && response['additional_data']['pagination']
+            && response['additional_data']['pagination']['more_items_in_collection']) {
+          dataAvailable = response['additional_data']['pagination']['more_items_in_collection'];
+        }
 
         if (!dataAvailable) {
           response.data = dataset;
