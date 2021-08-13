@@ -4,8 +4,13 @@
   "description": "Pipedrive Wrapper is a sugar wrapper over official package Pipedrive",
   "keywords": [
     "pipedrive",
-    "crm",
-    "erp",
+    "CRM",
+    "sales",
+    "contacts",
+    "customers",
+    "deals",
+    "pipeline",
+    "sales pipeline",
     "wrapper",
     "sugar"
   ],
