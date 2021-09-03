@@ -1,6 +1,6 @@
 {
   "name": "pipedrive-wrapper",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Pipedrive Wrapper is a sugar wrapper over official package Pipedrive",
   "keywords": [
     "pipedrive",
@@ -14,7 +14,7 @@
     "wrapper",
     "sugar"
   ],
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
     "test": "mocha"
   },
