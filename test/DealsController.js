@@ -33,13 +33,13 @@ describe('DealsController', function() {
         });
   }
 
-  describe('#findAndSaveDeal()', function() {
+  describe('#findOrCreateDeal()', function() {
     before('Remove a test deal before the start', beforeAndAfterSuit);
     after('Remove a test deal before the start', beforeAndAfterSuit);
 
     it('Create a deal', function(done) {
       pipedrive.DealsController.
-          findAndSaveDeal({
+          findOrCreateDeal({
                 body: {
                   title: data.deal.title,
                 },
@@ -66,7 +66,7 @@ describe('DealsController', function() {
     });
     it('Find a deal', function(done) {
       pipedrive.DealsController.
-          findAndSaveDeal({
+          findOrCreateDeal({
                 body: {
                   title: data.deal.title,
                 },
@@ -80,7 +80,7 @@ describe('DealsController', function() {
           ).
           then(response => {
             try {
-              assert.strictEqual(response.data.id > 0, true);
+              assert.strictEqual(response.data.length > 0, true);
 
               return done();
             } catch (ex) {

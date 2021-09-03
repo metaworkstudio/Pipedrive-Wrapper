@@ -33,13 +33,13 @@ describe('OrganizationsController', function() {
         });
   }
 
-  describe('#findAndSaveOrganization()', function() {
+  describe('#findOrCreateOrganization()', function() {
     before('Remove a test organization before the start', beforeAndAfterSuit);
     after('Remove a test organization before the start', beforeAndAfterSuit);
 
     it('Create an organization', function(done) {
       pipedrive.OrganizationsController.
-          findAndSaveOrganization({
+          findOrCreateOrganization({
                 body: {
                   name: data.organization.name,
                 },
@@ -66,7 +66,7 @@ describe('OrganizationsController', function() {
     });
     it('Find an organization', function(done) {
       pipedrive.OrganizationsController.
-          findAndSaveOrganization({
+          findOrCreateOrganization({
                 body: {
                   name: data.organization.name,
                 },
@@ -80,7 +80,7 @@ describe('OrganizationsController', function() {
           ).
           then(response => {
             try {
-              assert.strictEqual(response.data.id > 0, true);
+              assert.strictEqual(response.data.length > 0, true);
 
               return done();
             } catch (ex) {

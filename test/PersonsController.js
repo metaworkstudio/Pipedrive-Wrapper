@@ -33,13 +33,13 @@ describe('PersonsController', function() {
         });
   }
 
-  describe('#findAndSavePerson()', function() {
+  describe('#findOrCreatePerson()', function() {
     before('Remove a test person before the start', beforeAndAfterSuit);
     after('Remove a test person before the start', beforeAndAfterSuit);
 
     it('Create a person', function(done) {
       pipedrive.PersonsController.
-          findAndSavePerson({
+          findOrCreatePerson({
                 body: {
                   name: data.person.name,
                 },
@@ -66,7 +66,7 @@ describe('PersonsController', function() {
     });
     it('Find a person', function(done) {
       pipedrive.PersonsController.
-          findAndSavePerson({
+          findOrCreatePerson({
                 body: {
                   name: data.person.name,
                 },
@@ -79,8 +79,9 @@ describe('PersonsController', function() {
               },
           ).
           then(response => {
+            console.log(response);
             try {
-              assert.strictEqual(response.data.id > 0, true);
+              assert.strictEqual(response.data.length > 0, true);
 
               return done();
             } catch (ex) {
