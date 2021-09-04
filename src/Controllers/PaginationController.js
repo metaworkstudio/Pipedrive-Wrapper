@@ -16,6 +16,7 @@ class PaginationController {
   static all(fn, input, callback) {
     return new Promise((resolve, reject) => {
       let dataset = [];
+      input = input || {};
       input.start = 0;
       input.limit = input && input.limit > 0 ? input.limit : 500;
 
