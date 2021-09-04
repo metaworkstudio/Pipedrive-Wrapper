@@ -7,9 +7,12 @@ const data = {
   person: {
     name: '[TEST] test person for testing',
   },
+  activity: {
+    subject: '[TEST] test activity for testing',
+  },
 };
 
-describe('PersonsController', function() {
+describe('ActivitiesController', function() {
   function beforeAndAfterSuit(done) {
     pipedrive.ItemsController.searchItemByField({
       term: data.person.name,
@@ -33,7 +36,7 @@ describe('PersonsController', function() {
         });
   }
 
-  describe('#findOrCreatePerson()', function() {
+  describe('#save()', function() {
     before('Remove a test person before the start', beforeAndAfterSuit);
     after('Remove a test person before the start', beforeAndAfterSuit);
 
@@ -64,23 +67,18 @@ describe('PersonsController', function() {
             return done(err);
           });
     });
-    it('Find a person', function(done) {
-      pipedrive.PersonsController.
-          findOrCreatePerson({
-                body: {
-                  name: data.person.name,
-                },
-                params: {
-                  term: data.person.name,
-                  fieldKey: 'name',
-                  returnItemIds: true,
-                  exactMatch: true,
-                },
+
+    it('Create an activity', function(done) {
+      pipedrive.ActivitiesController.
+          save({
+                subject: data.activity.subject,
               },
           ).
           then(response => {
             try {
-              assert.strictEqual(response.data.length > 0, true);
+              assert.strictEqual(response.data.id > 0, true);
+
+              data.activity.id = response.data.id;
 
               return done();
             } catch (ex) {
@@ -91,56 +89,18 @@ describe('PersonsController', function() {
             return done(err);
           });
     });
-  });
-
-  describe('#findAndSavePerson()', function() {
-    before('Remove a test person before the start', beforeAndAfterSuit);
-    after('Remove a test person before the start', beforeAndAfterSuit);
-
-    it('Create a person', function(done) {
-      pipedrive.PersonsController.
-          findAndSavePerson({
-                body: {
-                  name: data.person.name,
-                },
-                params: {
-                  term: data.person.name,
-                  fieldKey: 'name',
-                  returnItemIds: true,
-                  exactMatch: true,
-                },
+    it('Edit an activity', function(done) {
+      pipedrive.ActivitiesController.
+          save({
+                id: data.activity.id,
+                subject: data.activity.subject,
               },
           ).
           then(response => {
             try {
               assert.strictEqual(response.data.id > 0, true);
 
-              return done();
-            } catch (ex) {
-              return done(ex);
-            }
-          }).
-          catch(err => {
-            return done(err);
-          });
-    });
-    it('Update a person', function(done) {
-      pipedrive.PersonsController.
-          findAndSavePerson({
-                body: {
-                  name: data.person.name,
-                },
-                params: {
-                  term: data.person.name,
-                  fieldKey: 'name',
-                  returnItemIds: true,
-                  exactMatch: true,
-                },
-              },
-          ).
-          then(response => {
-            try {
-              assert.strictEqual(response.data.id > 0, true);
+              data.activity.id = response.data.id;
 
               return done();
             } catch (ex) {
