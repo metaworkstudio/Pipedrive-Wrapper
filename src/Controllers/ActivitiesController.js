@@ -10,7 +10,7 @@ class ActivitiesControllerWrapper extends ActivitiesController {
    * @param {function} [callback]
    * @returns {Promise<unknown>}
    */
-  static save(input, callback) {
+  static saveActivity(input, callback) {
     const _callback = typeof callback === 'function' ? callback : () => undefined;
 
     return new Promise((resolve, reject) => {

@@ -36,7 +36,7 @@ describe('ActivitiesController', function() {
         });
   }
 
-  describe('#save()', function() {
+  describe('#saveActivity()', function() {
     before('Remove a test person before the start', beforeAndAfterSuit);
     after('Remove a test person before the start', beforeAndAfterSuit);
 
@@ -70,7 +70,7 @@ describe('ActivitiesController', function() {
 
     it('Create an activity', function(done) {
       pipedrive.ActivitiesController.
-          save({
+          saveActivity({
                 subject: data.activity.subject,
               },
           ).
@@ -91,7 +91,7 @@ describe('ActivitiesController', function() {
     });
     it('Edit an activity', function(done) {
       pipedrive.ActivitiesController.
-          save({
+          saveActivity({
                 id: data.activity.id,
                 subject: data.activity.subject,
               },
